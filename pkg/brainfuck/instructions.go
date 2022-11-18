@@ -1,5 +1,7 @@
 package brainfuck
 
+// This file contains the Instructions for vanilla Brainfuck language.
+
 import (
 	"errors"
 	"fmt"

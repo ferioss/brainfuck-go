@@ -6,6 +6,7 @@ import (
 	"io"
 )
 
+// Option allows modification of the interpreter.
 type Option interface {
 	Apply(bf *Interpreter) error
 }

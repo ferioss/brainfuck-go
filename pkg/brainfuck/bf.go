@@ -9,6 +9,7 @@ import (
 	"github.com/ferioss/brainfuck-go/pkg/stack"
 )
 
+// Interpreter is the main entity of this package. It contains an internal State, which is update by each instruction.
 type Interpreter struct {
 	symbolToInstruction map[rune]Instruction
 
@@ -17,6 +18,8 @@ type Interpreter struct {
 	debug bool
 }
 
+// State represents the state of the interpreter. Each Instruction that is executed will update the state, resulting in the next state.
+// To extend the functionality of the language, new Instructions can be defined to modify the State in a custom way.
 type State struct {
 	Code []rune
 
@@ -30,6 +33,7 @@ type State struct {
 	DataPtr int
 }
 
+// Instructions are functions that update the State.
 type Instruction func(*State) error
 
 // NewInterpreter creates a new Brainfuck interpreter which will read the code from codeReader. By default, it uses stdin/stdout for I/O. This behavior can be modified via options.
