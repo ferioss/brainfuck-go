@@ -8,7 +8,7 @@ A [Brainfuck](https://en.wikipedia.org/wiki/Brainfuck) interpreter in Go.
 go get -u github.com/ferioss/brainfuck-go
 ```
 
-This interpreter can be used as a library inside a Go code. See [usage example](cmd/brainfuck/main.go).
+This interpreter can be used as a library inside a Go code. Custom instructions can be added to extend the Brainfuck language. Refer to the [usage example](cmd/brainfuck/main.go).
 
 To run this project as a standalone executable, use `make run`. (See [Makefile](Makefile) for more options)
 

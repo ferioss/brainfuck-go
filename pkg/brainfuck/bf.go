@@ -115,7 +115,7 @@ func (bf *Interpreter) applyInstruction(i Instruction) error {
 	}
 
 	if bf.state.ProgramCounter == pc {
-		// do not increment program counter if the instruction changed it
+		// do not increment program counter if the instruction changed it. This allows instructions to override normal execution flow.
 		bf.state.ProgramCounter++
 	}
 

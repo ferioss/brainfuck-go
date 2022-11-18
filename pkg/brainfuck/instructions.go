@@ -61,6 +61,7 @@ func decrPtr(s *State) error {
 func writeOutput(s *State) error {
 	_, err := s.OutputWriter.WriteRune(s.Data[s.DataPtr])
 	if err != nil {
+		err = fmt.Errorf("failed to write output: %w", err)
 		return err
 	}
 
@@ -72,6 +73,7 @@ func readInput(s *State) error {
 	val, _, err := s.InputReader.ReadRune()
 	if err != nil {
 		if err != io.EOF {
+			err = fmt.Errorf("failed to read output: %w", err)
 			return err
 		}
 		// do not change value on EOF
