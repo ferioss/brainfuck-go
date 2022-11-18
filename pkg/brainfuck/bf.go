@@ -32,6 +32,8 @@ type State struct {
 
 type Instruction func(*State) error
 
+// NewInterpreter creates a new Brainfuck interpreter which will read the code from codeReader. By default, it uses stdin/stdout for I/O. This behavior can be modified via options.
+// Debug messages and custom instructions are also supported via options.
 func NewInterpreter(codeReader io.Reader, options ...Option) (bf *Interpreter, err error) {
 	// make a copy of the default symbol to instruction map
 	s2i := make(map[rune]Instruction, len(symbolToInstruction))
@@ -73,8 +75,12 @@ func NewInterpreter(codeReader io.Reader, options ...Option) (bf *Interpreter, e
 	return bf, nil
 }
 
+// Runs the program.
 func (bf *Interpreter) Run() error {
-	defer bf.state.OutputWriter.Flush()
+	defer func() {
+		_, _ = bf.state.OutputWriter.WriteString("\n")
+		_ = bf.state.OutputWriter.Flush()
+	}()
 
 	for bf.state.ProgramCounter < len(bf.state.Code) {
 		instructionSymbol := bf.state.Code[bf.state.ProgramCounter]

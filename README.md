@@ -2,6 +2,16 @@
 
 A [Brainfuck](https://en.wikipedia.org/wiki/Brainfuck) interpreter in Go.
 
+## Usage
+
+```bash
+go get -u github.com/ferioss/brainfuck-go
+```
+
+This interpreter can be used as a library inside a Go code. See [usage example](cmd/brainfuck/main.go).
+
+To run this project as a standalone executable, use `make run`. (See [Makefile](Makefile) for more options)
+
 ## [Portability Issues](https://en.wikipedia.org/wiki/Brainfuck#Portability_issues)
 
 ### Cell size
